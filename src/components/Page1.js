@@ -3,7 +3,7 @@ import CustomizedAccordions from "./common/CustomizedAccordions";
 const Page1 = () => {
   return (
     <>
-      <h1>Hello</h1>
+      <h1>All the best!</h1>
       <CustomizedAccordions />
     </>
   );

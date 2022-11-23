@@ -50,74 +50,54 @@ export default function CustomizedAccordions() {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const questionContent = [
+    {
+      alias: "Active Lights",
+      forkedUrl:
+        "https://stackblitz.com/edit/react-relglg?file=src/ChangeColor.js",
+      panel: "panel1",
+    },
+    {
+      alias: "Quiz",
+      forkedUrl:
+        "https://stackblitz.com/edit/react-44yptq?file=src/App.js",
+      panel: "panel2",
+    },
+    {
+      alias: "Generate Form",
+      forkedUrl:
+        "https://stackblitz.com/edit/react-44yptq?file=src/App.js",
+      panel: "panel3",
+    },
+  ];
   return (
     <div>
-      <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
-      >
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Traffic Light</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Card
-            component="iframe"
-            src="https://stackblitz.com/edit/react-relglg?file=src/ChangeColor.js"
-            sx={{
-              bgcolor: "background.paper",
-              boxShadow: 1,
-              borderRadius: 2,
-              p: 2,
-              minWidth: 1500,
-              minHeight: 800,
-            }}
-          ></Card>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
-      >
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Calculator</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Card
-            component="iframe"
-            src="https://stackblitz.com/edit/react-relglg?file=src/App.js"
-            sx={{
-              bgcolor: "background.paper",
-              boxShadow: 1,
-              borderRadius: 2,
-              p: 2,
-              minWidth: 1500,
-              minHeight: 800,
-            }}
-          ></Card>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel3"}
-        onChange={handleChange("panel3")}
-      >
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Card
-            component="iframe"
-            src="https://stackblitz.com/edit/react-relglg?file=src/App.js"
-            sx={{
-              bgcolor: "background.paper",
-              boxShadow: 1,
-              borderRadius: 2,
-              p: 2,
-              minWidth: 1500,
-              minHeight: 800,
-            }}
-          ></Card>
-        </AccordionDetails>
-      </Accordion>
+      {questionContent.map((que) => {
+        return (
+          <Accordion
+            expanded={expanded === que.panel}
+            onChange={handleChange(que.panel)}
+          >
+            <AccordionSummary>
+              <Typography>{que.alias}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card
+                component="iframe"
+                src={que.forkedUrl}
+                sx={{
+                  bgcolor: "background.paper",
+                  boxShadow: 1,
+                  borderRadius: 2,
+                  p: 2,
+                  minWidth: 1200,
+                  minHeight: 500,
+                }}
+              ></Card>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
     </div>
   );
 }
